@@ -1,0 +1,14 @@
+<psk-container controller-name="ShareQRCodeController">
+    <psk-modal id="shareQrCodeModal" opened>
+        <psk-label slot="title" class="title" label="@title"></psk-label>
+
+        <div class='content'>
+            <psk-label label="@description"></psk-label>
+            <psk-barcode-generator size="12" type="qrcode" data="@data.identifier"></psk-barcode-generator>
+        </div>
+
+        <div class='footer' slot='footer'>
+            <psk-button label="Copy to clipboard" event-name="copy-to-clipboard-on-click"></psk-button>
+        </div>
+    </psk-modal>
+</psk-container>

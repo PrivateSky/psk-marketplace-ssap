@@ -1,0 +1,57 @@
+<psk-page title="Cardinal.js">
+    <psk-container controller-name="MarketplaceController">
+        <div class="page-title-container">
+            <psk-label class="page-title" label="Marketplace"></psk-label>
+            <div class="right-align">
+                <psk-button-group icon="gear" icon-color="#ffffff" classes="window-maximize">
+
+                    <psk-button event-name="submit-application" class="btn-menu">
+                        <psk-icon class="dossier-icon icon-medium menu-icon icon-responsive" icon="plus"></psk-icon>
+                        <psk-label label="Submit application"></psk-label>
+                    </psk-button>
+
+                    <psk-condition condition="@isAdmin" class="btn-switch-wrapper">
+                        <psk-button event-name="manage-applications" class="btn-menu">
+                            <psk-icon class="dossier-icon icon-medium menu-icon icon-responsive" icon="tasks"></psk-icon>
+                            <psk-label label="Manage applications"></psk-label>
+                        </psk-button>
+                    </psk-condition>
+
+                    <psk-button class="btn-menu" event-data="@mountedCategoryPath" event-name="share-marketplace">
+                        <psk-icon class="dossier-icon icon-medium menu-icon icon-responsive" icon="share"></psk-icon>
+                        <psk-label label="Share marketplace"></psk-label>
+                    </psk-button>
+                </psk-button-group>
+            </div>
+        </div>
+        <hr>
+        <psk-page title="@pageTitle">
+            <psk-condition condition="@conditionalExpressions.isLoading">
+                <psk-ui-loader slot="condition-true" should-be-rendered="true"></psk-ui-loader>
+                <psk-grid slot="condition-false">
+                    <psk-grid class="add-menu">
+                        <div class="marketplace_align">
+                            <psk-text-input class="marketplace-search-bar" view-model="searchBox"></psk-text-input>
+                        </div>
+                        <psk-condition class="display-switch-button" condition="@isGridLayout" class="btn-switch-wrapper">
+                            <psk-button slot="condition-true" title="@hoverLabels.switchGridHover"
+                                        event-name="switch-layout" button-class="btn-switch">
+                                <psk-icon color="#572a57" icon="th" class="right-menu"></psk-icon>
+                            </psk-button>
+
+                            <psk-button slot="condition-false" title="@hoverLabels.switchListHover"
+                                        event-name="switch-layout" button-class="btn-switch">
+                                <psk-icon color="#572a57" icon="th-list" class="right-menu"></psk-icon>
+                            </psk-button>
+                        </psk-condition>
+                    </psk-grid>
+                        <psk-page-loader id="marketplace-container" slot="condition-false"
+                                         page-url="@pageLoader.walletContent"></psk-page-loader>
+                    </psk-grid>
+            </psk-condition>
+        </psk-page>
+
+        <psk-list-feedbacks messages-to-display="5" time-alive="3000"></psk-list-feedbacks>
+    </psk-container>
+</psk-page>
+
