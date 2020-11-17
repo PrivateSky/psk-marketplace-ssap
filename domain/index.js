@@ -1,12 +1,8 @@
 console.log("Loaded from domain.js");
 
-const MARKETPLACE_APP_SEED = `/web-wallet/apps/psk-marketplace-ssapp/seed`;
-const CODE_FOLDER = "/code";
 const INSTALLED_APPLICATIONS_MOUNTING_PATH = "/my-apps";
 const IN_REVIEW_APPLICATIONS_MOUNTING_PATH = "/appsInReview";
 const AVAILABLE_APPLICATIONS_MOUNTING_PATH = "/availableApps";
-
-const MARKETPLACES_MOUNTING_PATH = "/marketplaces";
 
 const keyssiresolver = require("opendsu").loadApi("resolver");
 
