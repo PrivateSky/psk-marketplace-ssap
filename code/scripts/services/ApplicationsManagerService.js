@@ -1,31 +1,24 @@
-import DSUStorage from "../../cardinal/controllers/base-controllers/lib/DSUStorage.js";
-
 class ApplicationsManagerService {
 
     constructor() {
         const HostBootScript = require("boot-host").HostBootScript;
         new HostBootScript("category-manager-service");
-        this.DSUStorage = new DSUStorage();
-    }
-
-    addMarketplace(marketplaceData, callback) {
-        $$.interaction.startSwarmAs("test/agent/007", "applicationsSwarm", "createMarketplaceDossier", marketplaceData).onReturn(callback);
     }
 
     addApplication(callback) {
-        $$.interaction.startSwarmAs("test/agent/007", "applicationsSwarm", "createApplicationsDossier").onReturn(callback);
+        $$.interaction.startSwarmAs("test/agent/007", "applicationsSwarm", "createApplication").onReturn(callback);
     }
 
     editApplication(applicationDetails, callback) {
-        $$.interaction.startSwarmAs("test/agent/007", "applicationsSwarm", "editApplicationsDossier", applicationDetails).onReturn(callback);
+        $$.interaction.startSwarmAs("test/agent/007", "applicationsSwarm", "editApplication", applicationDetails).onReturn(callback);
     }
 
     installApplication(applicationDetails, callback) {
-        $$.interaction.startSwarmAs("test/agent/007", "applicationsSwarm", "installApplicationsDossier", applicationDetails).onReturn(callback);
+        $$.interaction.startSwarmAs("test/agent/007", "applicationsSwarm", "installApplication", applicationDetails).onReturn(callback);
     }
 
     removeApplication(applicationPath, callback) {
-        $$.interaction.startSwarmAs("test/agent/007", "applicationsSwarm", "removeApplicationDossier", applicationPath).onReturn(callback);
+        $$.interaction.startSwarmAs("test/agent/007", "applicationsSwarm", "removeApplication", applicationPath).onReturn(callback);
     }
 
     listApplications(callback) {
@@ -44,7 +37,7 @@ class ApplicationsManagerService {
 let applicationsManagerService = new ApplicationsManagerService();
 let getApplicationsManagerServiceInstance = function () {
     return applicationsManagerService;
-}
+};
 
 export {
     getApplicationsManagerServiceInstance

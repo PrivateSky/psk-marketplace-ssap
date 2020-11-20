@@ -28,7 +28,6 @@ const rootModel = {
         value: ''
     },
     image: null,
-    imageCeva: null,
     fileChooserLabel: 'Select image...',
     contentLabels: {
         myWalletLabel: "Submit Application"

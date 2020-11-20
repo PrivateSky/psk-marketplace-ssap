@@ -7,14 +7,7 @@ const AVAILABLE_APPLICATIONS_MOUNTING_PATH = "/availableApps";
 const keyssiresolver = require("opendsu").loadApi("resolver");
 
 $$.swarms.describe('applicationsSwarm', {
-    start: function (data) {
-        if (rawDossier) {
-            return this.createApplicationsDossier(data);
-        }
-        this.return(new Error("Raw Dossier is not available."));
-    },
-
-    __createApplicationsDossier: function (callback) {
+    __createApplication: function (callback) {
         const keyssiSpace = require("opendsu").loadApi("keyssi");
         rawDossier.getKeySSI((err, ssi) => {
             if (err) {
@@ -37,8 +30,8 @@ $$.swarms.describe('applicationsSwarm', {
         });
     },
 
-    createApplicationsDossier: function () {
-        this.__createApplicationsDossier((err, keySSI) => {
+    createApplication: function () {
+        this.__createApplication((err, keySSI) => {
             if (err) {
                 console.error(err);
                 return this.return(err);
@@ -47,8 +40,8 @@ $$.swarms.describe('applicationsSwarm', {
         })
     },
 
-    editApplicationsDossier: function (applicationDetails) {
-        this.__removeApplicationDossier(applicationDetails, (err, data) => {
+    editApplications: function (applicationDetails) {
+        this.__removeApplication(applicationDetails, (err, data) => {
             if (err) {
                 return this.return(err);
             }
@@ -74,8 +67,8 @@ $$.swarms.describe('applicationsSwarm', {
         });
     },
 
-    installApplicationsDossier: function (applicationDetails) {
-        this.__removeApplicationDossier(applicationDetails, (err, data) => {
+    installApplication: function (applicationDetails) {
+        this.__removeApplication(applicationDetails, (err, data) => {
             if (err) {
                 return this.return(err);
             }
@@ -93,7 +86,7 @@ $$.swarms.describe('applicationsSwarm', {
         });
     },
 
-    __removeApplicationDossier(applicationDetails, callback) {
+    __removeApplication(applicationDetails, callback) {
         rawDossier.unmount(applicationDetails.path, (err, data) => {
             if (err) {
                 return callback(err);
@@ -102,8 +95,8 @@ $$.swarms.describe('applicationsSwarm', {
         });
     },
 
-    removeApplicationDossier(applicationDetails) {
-        this.__removeApplicationDossier(applicationDetails, (err, data) => {
+    removeApplication(applicationDetails) {
+        this.__removeApplication(applicationDetails, (err, data) => {
             if (err) {
                 return this.return(err);
             }
