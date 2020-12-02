@@ -38,8 +38,8 @@
 			},
 			{
 				"type": "copy",
-				"src": "../privatesky/psknode/bundles/hostBoot.js",
-				"target": "code/scripts/bundles/hostBoot.js",
+				"src": "../privatesky/psknode/bundles/iframeBoot.js",
+				"target": "code/scripts/bundles/iframeBoot.js",
 				"options": {
 					"overwrite": true
 				}
@@ -48,14 +48,6 @@
 				"type": "copy",
 				"src": "../privatesky/psknode/bundles/webshims.js",
 				"target": "code/scripts/bundles/webshims.js",
-				"options": {
-					"overwrite": true
-				}
-			},
-			{
-				"type": "copy",
-				"src": "../privatesky/psknode/bundles/ssappBoot.js",
-				"target": "code/scripts/bundles/ssappBoot.js",
 				"options": {
 					"overwrite": true
 				}
